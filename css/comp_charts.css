@@ -1,0 +1,77 @@
+/*
+    Overriding some Shortcodes Ultimate styling
+    Align the table in the center of the screen
+*/
+.su-table {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* placing icon and text next to each other in the review buttons */
+.su-button span {
+    display: flex !important;
+    justify-content: space-between;
+    align-items: center;
+}
+/* End overrides */
+
+/*
+    Removing the default borders around the cells and adding new ones
+    The cells are 150px wide
+*/
+.comp_chart tr td {
+    border: none !important;
+    border-bottom: 1px solid #c3c3c3 !important;
+    border-right: 1px solid #f3f3f3 !important;
+    width: 150px !important;
+}
+
+/* The first and last column shouldn't have vertical borders */
+.comp_chart tr td:first-child, .comp_chart tr td:last-child {
+    border-right: none !important;
+}
+
+/* Make the column headers stand out a little more by adding a thicker line and making them bold */
+.comp_chart tr:first-child td {
+    border-bottom: 1px solid #909090 !important;
+    font-weight: bold;
+}
+
+/* The text in the cells should be centered except for the first column */
+.comp_chart tr td:not(.comp_chart tr td:first-child) {
+    text-align: center;
+}
+
+
+/* Setting the colors of the links the same as the buttons */
+.comp_chart tr td a {
+    color: #519eee;
+}
+
+/* Make the table scrollable starting at 860px or less */
+@media (max-width: 860px) {
+    /* Add the horzintal scrollbar on the parent */
+    .su-table {
+        overflow-x: auto !important;
+        position: relative !important;
+        margin: auto !important;
+    }
+
+    /* Fix the first column in place */
+    .comp_chart tr td:first-child {
+        position: sticky !important;
+        left: 0;
+        z-index: 10;
+        min-width: 30vw !important;
+        height: 100% !important;
+        display: block;
+    }
+
+    /* Widen the columns so one column fills the remaining space */
+    .comp_chart tr td:not(.comp_chart tr td:first-child) {
+        position: relative;
+        left: 100vw;
+        min-width: 50vw !important;
+    }
+}
